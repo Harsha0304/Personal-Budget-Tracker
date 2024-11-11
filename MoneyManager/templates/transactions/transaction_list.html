@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction List</title>
+</head>
+<body>
+    <h1>Transactions</h1>
+    <ul>
+        {% for transaction in transactions %}
+            <li>{{ transaction.date }} - {{ transaction.transaction_type }} - {{ transaction.amount }} with {{ transaction.person.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_transaction' %}">Add New Transaction</a>
+</body>
+</html>

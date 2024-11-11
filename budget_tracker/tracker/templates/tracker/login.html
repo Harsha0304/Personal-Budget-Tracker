@@ -2,26 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Transaction</title>
+    <title>Login</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #f4f4f9; }
-        .container { max-width: 500px; margin: 0 auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .container { max-width: 400px; margin: 0 auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
         h2 { text-align: center; color: #333; }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-weight: bold; }
-        input[type="text"], input[type="number"], input[type="date"], textarea { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ddd; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ddd; }
         .btn { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
         .btn:hover { background-color: #0056b3; }
+        .message { text-align: center; color: red; margin-top: 10px; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2>Add New Transaction</h2>
+    <h2>Login</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn">Add Transaction</button>
+        <button type="submit" class="btn">Login</button>
     </form>
+    <p class="message">Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
 </div>
 </body>
 </html>

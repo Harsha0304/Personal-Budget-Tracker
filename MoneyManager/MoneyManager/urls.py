@@ -1,5 +1,5 @@
 """
-URL configuration for budget_tracker project.
+URL configuration for MoneyManager project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -15,14 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from tracker import views  # Import your views
+from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.transaction_list, name='transaction_list'),
-    path('add/', views.add_transaction, name='add_transaction'),
-    path('login/', views.login_view, name='login'),
-    path('signup/', views.signup_view, name='signup'),
-    path('logout/', views.logout_view, name='logout'),
+    path('transactions/', include('transactions.urls')),  # Include transactions URLs
+    path('', RedirectView.as_view(url='/transactions/')),  # Redirect root to transactions
 ]
